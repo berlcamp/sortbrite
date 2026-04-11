@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Outfit, DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Sortbrite",
-  description: "Providing solutions to data sorting and processing.",
+  title: "Sortbrite — Enterprise Systems Platform",
+  description:
+    "Unified enterprise platform powering School Management, HRIS, Procurement & Budget, POS, Construction, and more. One platform, every solution.",
 };
 
 export default function RootLayout({
@@ -15,8 +26,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${outfit.variable} ${dmSans.variable}`}>
+      <body style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+        {children}
+      </body>
     </html>
   );
 }
